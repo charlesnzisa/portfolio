@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="title">Categories</h1>
+    <div class="category-list">
+        <ul>
+            {% if categories %}
+                {% for category in categories %}
+                    <li>
+                        <div class="category">
+                            <a href="{{ url_for('category_details', category_id=category.id) }}">
+                                <img src="{{ url_for('static', filename=category.image_url) }}" alt="{{ category.name }} Image"/>
+                                <div class="layer">
+                                    <p><b>#{{ category.id }}</b></p>
+                                    <b>
+                                        <p class="name">{{ category.name }}</p>
+                                    </b>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                {% endfor %}
+            {% else %}
+                <p>No categories found.</p>
+            {% endif %}
+        </ul>
+    </div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="profile-container">
+    <div class="profile">
+        <h1 class="title">
+            <i class="fa-solid fa-hand-wave"></i>Hi there, {{ name }}!
+        </h1>
+        <br>
+        <p><span style="color: #007bff; font-size: 19px;">Thanks for chosing MkuLink!</span><a href="{{url_for('products.product')}}" style="text-decoration: none; margin-left: 10px; font-size: 25px; color: #04AA6D;">Click here to continue shopping with us<i class="fa-solid fa-forward"></i></a></p>
+        <br>
+        <div class="sign-out">
+            <a href="{{ url_for('auth.logout') }}" class="sign-out-button">Sign Out<i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+        </div>
+    </div>
+</div>
+{% endblock %}

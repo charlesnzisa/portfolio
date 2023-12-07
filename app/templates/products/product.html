@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div id="products">
+    <div class="container">
+        <h2>Enjoy Shopping With Us</h2>
+        <ul class="product-list">
+            {% for product in products %}
+                <li>
+                    <div class="product">
+                        <img src="{{ config['PRODUCT_IMAGE_URL_PREFIX'] ~ product.image_url }}" alt="{{ product.name }} Image">
+                        <div class="layer">
+                            <p class="name"><b>{{ product.name }}</b></p>
+                            <p>{{ product.description }}</p>
+                            <p>Price: Ksh.{{ product.price }}</p>
+                            
+                            <!-- Adding a form to allow users to add the product to their cart -->
+                            <form method="POST" action="{{ url_for('cart.add_to_cart', product_id=product.id) }}">
+                                <!-- form content -->
+                                <label for="quantity">Quantity:(grams)</label>
+                                <input type="number" id="quantity" name="quantity" min="1" value="1">
+                                <button type="submit">Add to Cart</button>
+                            </form>
+                            
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}
